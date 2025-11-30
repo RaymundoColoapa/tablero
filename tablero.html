@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Tablero de Visualización – Google Charts</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart1);
+
+  function drawChart1() {
+    var data = google.visualization.arrayToDataTable([
+      ['Año', 'Pobreza', 'Pobreza extrema'],
+      ['2008', 44.4, 11.0],
+      ['2018', 41.9, 7.4]
+    ]);
+
+    var options = {
+      title: 'Evolución de la pobreza 2008–2018',
+      hAxis: { title: 'Año' },
+      vAxis: { title: 'Porcentaje (%)' },
+      curveType: 'function',
+      legend: { position: 'bottom' }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('grafico1'));
+    chart.draw(data, options);
+  }
+</script>
+
+<script type="text/javascript">
+  google.charts.setOnLoadCallback(drawChart2);
+
+  function drawChart2() {
+    var data = google.visualization.arrayToDataTable([
+      ['Carencia social', '2008', '2018'],
+      ['Rezago educativo', 21.9, 16.9],
+      ['Acceso a servicios de salud', 38.4, 16.2],
+      ['Acceso a seguridad social', 65.0, 57.3],
+      ['Calidad y espacios en la vivienda', 17.7, 11.1],
+      ['Servicios básicos en la vivienda', 22.9, 19.8],
+      ['Acceso a la alimentación', 21.7, 20.4]
+    ]);
+
+    var options = {
+      title: 'Carencias sociales 2008–2018',
+      hAxis: { title: 'Porcentaje (%)' },
+      vAxis: { title: 'Carencia social' },
+      bars: 'horizontal',
+      legend: { position: 'top' },
+      colors: ['#3366cc', '#dc3912']
+    };
+
+    var chart = new google.visualization.BarChart(document.getElementById('grafico2'));
+    chart.draw(data, options);
+  }
+</script>
+
+<script type="text/javascript">
+  google.charts.setOnLoadCallback(drawChart3);
+
+  function drawChart3() {
+    var data = google.visualization.arrayToDataTable([
+      ['Año', 'Pobreza extrema (%)', 'Pobreza por ingresos (%)'],
+      ['2008', 16.8, 49.0],
+      ['2018', 16.8, 48.8]
+    ]);
+
+    var options = {
+      title: 'Ingreso inferior a la línea de pobreza (porcentaje)',
+      hAxis: { title: 'Año' },
+      vAxis: { title: 'Porcentaje (%)' },
+      seriesType: 'bars',
+      series: {
+        0: { type: 'line' },  // pobreza extrema como línea
+        1: { type: 'bars' }   // pobreza por ingresos como barras
+      },
+      legend: { position: 'bottom' }
+    };
+
+    var chart = new google.visualization.ComboChart(document.getElementById('grafico3'));
+    chart.draw(data, options);
+  }
+</script>
+
+
+<script type="text/javascript">
+  google.charts.setOnLoadCallback(drawChart4);
+
+  function drawChart4() {
+    var data = google.visualization.arrayToDataTable([
+      ['Ámbito', '2008', '2018'],
+      ['Rural', 62.5, 55.3],
+      ['Urbano', 38.9, 37.6]
+    ]);
+
+    var options = {
+      title: 'Pobreza en zonas rurales y urbanas (2008–2018)',
+      hAxis: { title: 'Ámbito' },
+      vAxis: { title: 'Porcentaje (%)' },
+      legend: { position: 'top' },
+      colors: ['#3366cc', '#dc3912']
+    };
+
+    var chart = new google.visualization.ColumnChart(document.getElementById('grafico4'));
+    chart.draw(data, options);
+  }
+</script>
+
+
+<script type="text/javascript">
+  google.charts.setOnLoadCallback(drawChart5);
+
+  function drawChart5() {
+    var data = google.visualization.arrayToDataTable([
+      ['Grupo de población', '2008', '2018'],
+      ['Hablantes de lengua indígena', 76.0, 74.9],
+      ['No hablantes de lengua indígena', 41.4, 39.4],
+      ['Mujeres', 44.6, 42.4],
+      ['Hombres', 44.0, 41.4]
+    ]);
+
+    var options = {
+      title: 'Pobreza por grupo de población (2008–2018)',
+      hAxis: { title: 'Porcentaje (%)' },
+      vAxis: { title: 'Grupo de población' },
+      bars: 'horizontal',
+      legend: { position: 'top' },
+      colors: ['#3366cc', '#dc3912']
+    };
+
+    var chart = new google.visualization.BarChart(document.getElementById('grafico5'));
+    chart.draw(data, options);
+  }
+</script>
+
+
+
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+        background: #f5f5f5;
+      }
+      h2 {
+        margin-top: 50px;
+        color: #333;
+      }
+      .chart-container {
+        background: #fff;
+        padding: 20px;
+        margin-bottom: 40px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <h1>Tablero de Visualización – CONEVAL 2008–2018</h1>
+
+    <div style="
+  background:#ffffff;
+  padding:15px;
+  margin-bottom:25px;
+  width: fit-content;
+  border-radius:8px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.15);
+  font-size:16px;
+">
+  <strong>Alumno:</strong> COLOAPA FRAGOSO JOSE RAYMUNDO<br>
+  <strong>Matrícula:</strong> 340478912
+</div>
+
+
+
+    <div class="chart-container">
+      <h2>Gráfico 1: Evolución de la pobreza</h2>
+      <div id="grafico1"></div>
+    </div>
+
+    <div class="chart-container">
+      <h2>Gráfico 2: Carencias sociales</h2>
+      <div id="grafico2"></div>
+    </div>
+
+    <div class="chart-container">
+      <h2>Gráfico 3: Ingreso inferior a la línea de pobreza</h2>
+      <div id="grafico3"></div>
+    </div>
+
+    <div class="chart-container">
+      <h2>Gráfico 4: Pobreza rural vs urbana</h2>
+      <div id="grafico4"></div>
+    </div>
+
+    <div class="chart-container">
+      <h2>Gráfico 5: Grupos de población y pobreza</h2>
+      <div id="grafico5"></div>
+    </div>
+
+  </body>
+</html>
+
